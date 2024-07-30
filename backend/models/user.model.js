@@ -1,48 +1,38 @@
 import mongoose from "mongoose";
+
 const userSchema = new mongoose.Schema({
   fullname: {
-    type: 'string',
-    required: true,
+    type: String,
+    required: true
   },
   email: {
-    type: 'string',
+    type: String,
     required: true,
     unique: true
   },
-  phone: {
-    type: 'Number',
-    required: true,
+  phoneNumber: {
+    type: Number,
+    required: true
   },
   password: {
-    type: 'password',
+    type: String,
     required: true,
   },
   role: {
-    type: 'string',
+    type: String,
     enum: ['student', 'recruiter'],
-    required: true,
+    required: true
   },
   profile: {
-    bio: {
-      type: 'string',
-    },
-    skills: {
-      type: 'string',
-    },
-    resume: {
-      type: 'string', // url
-    },
-    resumeOriginalName: {
-      type: 'string',
-    },
-    company: {
-      type: mongoose.Schema.Types.ObjectId, ref: "Company",
-    },
+    bio: { type: String },
+    skills: [{ type: String }],
+    resume: { type: String }, // URL to resume file
+    resumeOriginalName: { type: String },
+    company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
     profilePhoto: {
-      type: 'string',
-      default: '',
+      type: String,
+      default: ""
     }
-  }
-
+  },
 }, { timestamps: true });
-export const user = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);
