@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './utils/db.js';
+import userRoute from './routes/user.route.js';
 
 dotenv.config();
 
@@ -29,6 +30,10 @@ app.get('/home', (req, res) => {
 
 // Connect to Database and Start Server
 const PORT = process.env.PORT || 3000;
+
+// api
+app.use("/api/v1/user", userRoute);
+
 app.listen(PORT, async () => {
   await connectDB();
   console.log(`Server running on port ${PORT}`);
