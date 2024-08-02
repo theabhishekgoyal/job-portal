@@ -93,6 +93,9 @@ const Login = () => {
               {showPassword ? <EyeOff /> : <Eye />}
             </div>
           </div>
+          <div className="flex justify-end mb-2">
+            <Link to="/forgot-password" className="text-blue-600 text-sm">Forgot Password?</Link>
+          </div>
           <div className="flex items-center justify-between">
             <RadioGroup className="flex items-center gap-4 my-5">
               <div className="flex items-center space-x-2">

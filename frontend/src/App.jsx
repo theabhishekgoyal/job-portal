@@ -14,6 +14,8 @@ import ProtectedRoute from './components/Admin/ProtectedRoute'
 import Companies from './components/Admin/Companies'
 import CompanyCreate from './components/Admin/CompanyCreate'
 import CompanySetup from './components/Admin/CompanySetup'
+import ForgotPassword from './components/auth/ForgotPassword'
+import ResetPassword from './components/auth/ResetPassword'
 
 
 const appRouter = createBrowserRouter([
@@ -28,6 +30,14 @@ const appRouter = createBrowserRouter([
   {
     path: '/signup',
     element: <Signup />
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />
+  },
+  {
+    path: '/reset-password/:token',
+    element: <ResetPassword />
   },
   {
     path: "/jobs",
@@ -47,28 +57,28 @@ const appRouter = createBrowserRouter([
   },
   // admin ke liye yha se start hoga
   {
-    path:"/admin/companies",
-    element: <ProtectedRoute><Companies/></ProtectedRoute>
+    path: "/admin/companies",
+    element: <ProtectedRoute><Companies /></ProtectedRoute>
   },
   {
-    path:"/admin/companies/create",
-    element: <ProtectedRoute><CompanyCreate/></ProtectedRoute> 
+    path: "/admin/companies/create",
+    element: <ProtectedRoute><CompanyCreate /></ProtectedRoute>
   },
   {
-    path:"/admin/companies/:id",
-    element:<ProtectedRoute><CompanySetup/></ProtectedRoute> 
+    path: "/admin/companies/:id",
+    element: <ProtectedRoute><CompanySetup /></ProtectedRoute>
   },
   {
-    path:"/admin/jobs",
-    element:<ProtectedRoute><AdminJobs/></ProtectedRoute> 
+    path: "/admin/jobs",
+    element: <ProtectedRoute><AdminJobs /></ProtectedRoute>
   },
   {
-    path:"/admin/jobs/create",
-    element:<ProtectedRoute><PostJob/></ProtectedRoute> 
+    path: "/admin/jobs/create",
+    element: <ProtectedRoute><PostJob /></ProtectedRoute>
   },
   {
-    path:"/admin/jobs/:id/applicants",
-    element:<ProtectedRoute><Applicants/></ProtectedRoute> 
+    path: "/admin/jobs/:id/applicants",
+    element: <ProtectedRoute><Applicants /></ProtectedRoute>
   },
 
 ])
