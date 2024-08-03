@@ -100,3 +100,44 @@ export const getAdminJobs = async (req, res) => {
         console.log(error);
     }
 }
+
+export const updateJob = async (req, res) => {
+    try {
+        const { title, description, requirements, salary, location, jobType, experience, position } = req.body;
+
+        const file = req.file;
+        let logo;
+        if (file) {
+            const fileUri = getDataUri(file);
+            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            logo = cloudResponse.secure_url;
+        }
+
+        const updateData = { title, description, requirements: requirements.split(","), salary, location, jobType, experienceLevel: experience, position };
+        if (logo) {
+            updateData.logo = logo;
+        }
+
+        const job = await Job.findByIdAndUpdate(req.params.id, updateData, { new: true });
+
+        if (!job) {
+            return res.status(404).json({
+                message: "Job not found.",
+                success: false
+            });
+        }
+
+        return res.status(200).json({
+            message: "Job information updated.",
+            job,
+            success: true
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "Internal Server Error.",
+            success: false
+        });
+    }
+};

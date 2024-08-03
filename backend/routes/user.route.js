@@ -11,5 +11,6 @@ router.route("/logout").get(logout);
 router.route("/forgot-password").post(forgotPassword),
 router.route("/reset-password/:token").post(resetPassword);
 router.route("/profile/update").post(isAuthenticated,singleUpload,updateProfile);
+
 export default router;
 

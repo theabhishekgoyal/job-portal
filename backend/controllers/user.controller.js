@@ -3,8 +3,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
-import sendResetEmail from '../utils/sendResetEmail.js';
-import crypto from 'crypto';
+import sendResetEmail from "../utils/sendResetEmail.js";
+import crypto from 'crypto'
 export const register = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
@@ -171,8 +171,6 @@ export const updateProfile = async (req, res) => {
     }
 }
 
-
-
 export const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
@@ -213,7 +211,6 @@ export const forgotPassword = async (req, res) => {
         });
     }
 };
-
 
 export const resetPassword = async (req, res) => {
     try {
@@ -258,5 +255,3 @@ export const resetPassword = async (req, res) => {
         });
     }
 };
-
-  
