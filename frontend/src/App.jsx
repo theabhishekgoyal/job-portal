@@ -15,7 +15,7 @@ import CompanyCreate from './components/admin/CompanyCreate'
 import CompanySetup from './components/admin/CompanySetup'
 import ForgotPassword from './components/auth/ForgotPassword'
 import ResetPassword from './components/auth/ResetPassword'
-import AdminJobs from './components/admin/AdminJobs'
+import AdminJobs from './components/admin/AdminJobs';
 
 
 const appRouter = createBrowserRouter([
