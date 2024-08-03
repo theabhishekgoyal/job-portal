@@ -17,7 +17,7 @@ const Applicants = lazy(() => import('./components/admin/Applicants'));
 const Companies = lazy(() => import('./components/admin/Companies'));
 const CompanyCreate = lazy(() => import('./components/admin/CompanyCreate'));
 const CompanySetup = lazy(() => import('./components/admin/CompanySetup'));
-const AdminJobs = lazy(() => import('./components/admin/AdminJobs'));
+const AdminJob = lazy(() => import('./components/admin/AdminJob'));
 
 const appRouter = createBrowserRouter([
   {
@@ -92,7 +92,7 @@ const appRouter = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Suspense fallback={<div>Loading...</div>}>
-          <AdminJobs />
+          <AdminJob />
         </Suspense>
       </ProtectedRoute>
     )
