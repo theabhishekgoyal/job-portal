@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Navbar from './components/shared/Navbar';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import Home from './components/Home';
@@ -10,7 +9,7 @@ import Profile from './components/Profile';
 import JobDescription from './components/JobDescription';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
-import ProtectedRoute from './components/admin/ProtectedRoute';
+import ProtectRoute from './components/admin/ProtectRoute';
 
 const PostJob = lazy(() => import('./components/admin/PostJob'));
 const Applicants = lazy(() => import('./components/admin/Applicants'));
@@ -60,61 +59,61 @@ const appRouter = createBrowserRouter([
   {
     path: "/admin/companies",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <Companies />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
   {
     path: "/admin/companies/create",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <CompanyCreate />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
   {
     path: "/admin/companies/:id",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <CompanySetup />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
   {
     path: "/admin/jobs",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <AdminJob />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
   {
     path: "/admin/jobs/create",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <PostJob />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
   {
     path: "/admin/jobs/:id/applicants",
     element: (
-      <ProtectedRoute>
+      <ProtectRoute>
         <Suspense fallback={<div>Loading...</div>}>
           <Applicants />
         </Suspense>
-      </ProtectedRoute>
+      </ProtectRoute>
     )
   },
 ]);
