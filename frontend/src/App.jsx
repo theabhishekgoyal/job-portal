@@ -1,3 +1,4 @@
+import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Navbar from './components/shared/Navbar';
 import Login from './components/auth/Login';
@@ -7,15 +8,16 @@ import Jobs from './components/Jobs';
 import Browse from './components/Browse';
 import Profile from './components/Profile';
 import JobDescription from './components/JobDescription';
-import PostJob from './components/admin/PostJob';
-import Applicants from './components/admin/Applicants';
-import ProtectedRoute from './components/admin/ProtectedRoute';
-import Companies from './components/admin/Companies';
-import CompanyCreate from './components/admin/CompanyCreate';
-import CompanySetup from './components/admin/CompanySetup';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
-import AdminJobs from './components/admin/AdminJobs';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+
+const PostJob = lazy(() => import('./components/admin/PostJob'));
+const Applicants = lazy(() => import('./components/admin/Applicants'));
+const Companies = lazy(() => import('./components/admin/Companies'));
+const CompanyCreate = lazy(() => import('./components/admin/CompanyCreate'));
+const CompanySetup = lazy(() => import('./components/admin/CompanySetup'));
+const AdminJobs = lazy(() => import('./components/admin/AdminJobs'));
 
 const appRouter = createBrowserRouter([
   {
@@ -57,29 +59,64 @@ const appRouter = createBrowserRouter([
   // admin ke liye yha se start hoga
   {
     path: "/admin/companies",
-    element: <ProtectedRoute><Companies /></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Companies />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
   {
     path: "/admin/companies/create",
-    element: <ProtectedRoute><CompanyCreate /></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <CompanyCreate />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
   {
     path: "/admin/companies/:id",
-    element: <ProtectedRoute><CompanySetup /></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <CompanySetup />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
   {
     path: "/admin/jobs",
-    element: <ProtectedRoute><AdminJobs/></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AdminJobs />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
   {
     path: "/admin/jobs/create",
-    element: <ProtectedRoute><PostJob /></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PostJob />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
   {
     path: "/admin/jobs/:id/applicants",
-    element: <ProtectedRoute><Applicants /></ProtectedRoute>
+    element: (
+      <ProtectedRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Applicants />
+        </Suspense>
+      </ProtectedRoute>
+    )
   },
-
 ]);
 
 function App() {
