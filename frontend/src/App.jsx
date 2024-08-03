@@ -7,7 +7,6 @@ import Jobs from './components/Jobs'
 import Browse from './components/Browse'
 import Profile from './components/Profile'
 import JobDescription from './components/JobDescription'
-import AdminJobs from './components/admin/AdminJobs'
 import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
@@ -16,6 +15,7 @@ import CompanyCreate from './components/admin/CompanyCreate'
 import CompanySetup from './components/admin/CompanySetup'
 import ForgotPassword from './components/auth/ForgotPassword'
 import ResetPassword from './components/auth/ResetPassword'
+import AdminJobs from './components/admin/AdminJobs'
 
 
 const appRouter = createBrowserRouter([
@@ -70,7 +70,7 @@ const appRouter = createBrowserRouter([
   },
   {
     path: "/admin/jobs",
-    element: <ProtectedRoute><AdminJobs /></ProtectedRoute>
+    element: <ProtectedRoute><AdminJobs/></ProtectedRoute>
   },
   {
     path: "/admin/jobs/create",
