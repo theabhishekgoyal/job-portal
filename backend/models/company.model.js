@@ -16,7 +16,8 @@ const companySchema = new mongoose.Schema({
         type:String 
     },
     logo:{
-        type:String // URL to company logo
+        type:String, // URL to company logo
+        default:"https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-blue-2174926871"
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId,

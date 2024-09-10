@@ -5,6 +5,7 @@ import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
 import sendResetEmail from "../utils/sendResetEmail.js";
 import crypto from 'crypto'
+
 export const register = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
@@ -171,6 +172,7 @@ export const updateProfile = async (req, res) => {
     }
 }
 
+
 export const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
@@ -197,7 +199,8 @@ export const forgotPassword = async (req, res) => {
         console.log(`User after setting reset token: ${JSON.stringify(user, null, 2)}`);
 
         const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
-        await sendResetEmail(user.email, resetUrl);
+        await sendResetEmail(user.email, user.fullname, resetUrl); 
+        console.log(`Sending email to: ${user.email} with name: ${user.fullname}`);
 
         res.status(200).json({
             message: 'Password reset link sent to your email.',

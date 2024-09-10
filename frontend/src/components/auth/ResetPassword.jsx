@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../shared/Navbar';
 import { Label } from '../ui/label';
@@ -11,6 +11,7 @@ import { USER_API_END_POINT } from '@/utils/constant';
 
 const ResetPassword = () => {
   const { token } = useParams(); // Retrieve the token from the URL
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -30,6 +31,7 @@ const ResetPassword = () => {
       });
       if (res.data.success) {
         toast.success('Password reset successfully');
+        navigate('/login'); // Navigate to login page after success
       }
     } catch (error) {
       toast.error(error.response.data.message);
