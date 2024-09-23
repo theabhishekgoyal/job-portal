@@ -32,7 +32,13 @@ const JobDescription = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                toast.error(error.response.data.message || "An error occurred.");
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                toast.error("An unknown error occurred.");
+            }
         }
     }
 

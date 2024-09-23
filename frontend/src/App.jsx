@@ -9,7 +9,7 @@ import Profile from './components/Profile';
 import JobDescription from './components/JobDescription';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
-import ProtectRoute from "./components/admin/ProtectRoute.jsx";
+import ProtectRoute from "./components/admin/RouteProtect.jsx";
 
 const PostJob = lazy(() => import('./components/admin/PostJob'));
 const Applicants = lazy(() => import('./components/admin/Applicants'));

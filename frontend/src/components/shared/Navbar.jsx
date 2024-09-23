@@ -25,7 +25,13 @@ const Navbar = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        toast.error(error.response.data.message || "An error occurred.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error("An unknown error occurred.");
+      }
     }
   };
 
@@ -34,7 +40,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
         <div>
           <h1 className="text-2xl font-bold">
-          Career<span className="text-[#F83002]">Cue</span>
+            Career<span className="text-[#F83002]">Cue</span>
           </h1>
         </div>
         <div className="flex items-center gap-12">
